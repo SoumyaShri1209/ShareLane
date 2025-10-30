@@ -38,7 +38,7 @@ export async function POST(req) {
 
     return NextResponse.json(newBlog, { status: 201 });
   } catch (error) {
-    console.error("POST /api/blog error:", error);
+    console.error("POST /api/posts error:", error);
     return NextResponse.json({ message: "POST error", error: error.message }, { status: 500 });
   }
 }

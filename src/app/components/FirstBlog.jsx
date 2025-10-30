@@ -16,7 +16,7 @@ const FirstBlog = ({ firstBlog }) => {
 
   return (
     <section>
-      <Link href={`/blog/${firstBlog?._id}`}>
+      <Link href={`/posts/${firstBlog?._id}`}>
         <div className="flex flex-col md:flex-row items-center gap-8 ">
           
           {/* Blog Image */}

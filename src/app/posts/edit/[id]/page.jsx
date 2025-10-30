@@ -25,7 +25,7 @@ const EditBlogPage = () => {
 
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`/api/blog/${id}`);
+        const res = await axios.get(`/api/posts/${id}`);
         setForm({
           title: res.data.title,
           excerpt: res.data.excerpt,
@@ -63,13 +63,13 @@ const EditBlogPage = () => {
     if (image) formData.append("image", image);
 
     try {
-      const res = await axios.put(`/api/blog/edit/${id}`, formData, {
+      const res = await axios.put(`/api/posts/edit/${id}`, formData, {
         headers: { Authorization: `Bearer ${session?.user?.accessToken}` },
       });
 
       if (res.status === 200) {
         toast.success("Blog updated!");
-        router.push(`/blog/${id}`);
+        router.push(`/posts/${id}`);
       } else {
         toast.error(res.data.message || "Failed to update blog");
       }

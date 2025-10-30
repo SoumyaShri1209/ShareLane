@@ -18,7 +18,7 @@ const OtherBlogs = ({ otherBlogs }) => {
 
             return (
               <div key={item?._id || index} className="flex flex-col gap-3">
-                <Link href={`/blog/${item?._id}`}>
+                <Link href={`/posts/${item?._id}`}>
                   <div className="cursor-pointer">
                     <Image
                       src={item?.image?.url || demoImage}

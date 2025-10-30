@@ -16,7 +16,7 @@ const BlogPage = () => {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        const res = await fetch("http://localhost:3000/api/blog", {
+        const res = await fetch("http://localhost:3000/api/posts", {
           cache: "no-store", // ✅ ensures fresh data every time
         });
         const data = await res.json();
@@ -46,7 +46,7 @@ const BlogPage = () => {
 
       {/* -------------------- FIRST BLOG -------------------- */}
       <section className="mb-16">
-        <Link href={`/blog/${firstBlog?._id}`}>
+        <Link href={`/posts/${firstBlog?._id}`}>
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Blog Image */}
             <div className="w-full lg:w-2/5">
@@ -112,7 +112,7 @@ const BlogPage = () => {
         <section>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {otherBlogs.map((item, index) => (
-              <Link key={item?._id || index} href={`/blog/${item?._id}`}>
+              <Link key={item?._id || index} href={`/posts/${item?._id}`}>
                 <div className="cursor-pointer flex flex-col gap-3">
                   {/* Blog Image */}
                   {item?.image?.url && (

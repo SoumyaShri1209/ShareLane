@@ -32,7 +32,7 @@ function LoginPage() {
         toast.error("Incorrect email or password", { duration: 3000 });
       } else {
         toast.success("Logged in successfully!", { duration: 3000 });
-        router.push("/blog"); // navigate to blog after login
+        router.push("/posts"); // navigate to blog after login
       }
     } catch (error) {
       toast.error("Login failed. Try again.", { duration: 3000 });

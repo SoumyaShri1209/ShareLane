@@ -11,7 +11,7 @@ export async function GET(req, context) {
   try {
     // 🔎 Await params (Next.js requirement)
     const { id } = await context.params;
-    console.log("=== 📩 GET /api/blog/[id] - Blog ID:", id);
+    console.log("=== 📩 GET /api/posts/[id] - Blog ID:", id);
 
     // ✅ Fetch blog and populate authorId with avatar (not photo)
     const blog = await Blog.findById(id)

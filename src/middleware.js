@@ -54,6 +54,6 @@ export const config = {
     "/verifyemail",
     "/forgotPassword",
     "/resetPassword",
-    "/blog/:path*",
+    "/posts/:path*",
   ],
 };

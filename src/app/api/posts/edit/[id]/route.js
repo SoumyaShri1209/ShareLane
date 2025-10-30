@@ -19,7 +19,7 @@ export const config = {
   api: { bodyParser: false }, // required for form data
 };
 
-// PUT /api/blog/edit/[id]
+// PUT /api/posts/edit/[id]
 export async function PUT(req, context) {
   const { params } =  context; // await params for app router dynamic API
   const { id } = params;

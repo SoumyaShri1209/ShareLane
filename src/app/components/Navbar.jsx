@@ -97,9 +97,9 @@ const Navbar = () => {
       <ul className="flex items-center gap-4 md:gap-6 lg:gap-8 text-base md:text-lg lg:text-xl">
         <li>
           <Link
-            href="/blog"
+            href="/posts"
             className={`hover:underline hover:decoration-white underline-offset-1 ${
-              pathname === "/blog" ? "text-yellow-300" : ""
+              pathname === "/posts" ? "text-yellow-300" : ""
             }`}
           >
             Blog

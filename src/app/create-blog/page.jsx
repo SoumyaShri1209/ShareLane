@@ -103,7 +103,7 @@ export default function CreateBlog() {
       console.log("Sending blog to API:", newBlog);
       console.log("Access Token:", session?.user?.accessToken);
 
-      const response = await fetch("/api/blog", {
+      const response = await fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export default function CreateBlog() {
 
       toast.success("Blog created successfully!");
       setState(initialState);
-      router.push("/blog");
+      router.push("/posts");
     } catch (error) {
       console.error("Submit error:", error);
       toast.error("Something went wrong.");
