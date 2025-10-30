@@ -1,4 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+
 
 # dependencies
 /node_modules
@@ -15,7 +16,7 @@
 
 # next.js
 /.next/
-/out/
+ /out/
 
 # production
 /build
@@ -23,6 +24,11 @@
 # misc
 .DS_Store
 *.pem
+*.log
+*.pid
+*.seed
+*.pid.lock
+Thumbs.db
 
 # debug
 npm-debug.log*
@@ -30,12 +36,34 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files (critical secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# vercel
+# vercel / deployment
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vscode / jetbrains editors
+.vscode/
+.idea/
+
+# local uploads / backups
+/public/uploads/
+tmp/
+uploads/
+.backup/
+
+# runtime data
+*.sqlite
+*.db
+
+# system files
+*.swp
+*.swo
