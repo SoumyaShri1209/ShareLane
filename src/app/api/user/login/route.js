@@ -3,6 +3,7 @@ import User from "@/models/userModel.js"
 import {NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
+import { corsHeaders } from '@/middleware/cors';
 
 
 connect()
@@ -43,7 +44,8 @@ export async function POST(request){
 
     const response = NextResponse.json({
         message : "Login successfully",
-        success: true
+        success: true,
+        headers: corsHeaders() 
     })
     console.log("token",token)
 

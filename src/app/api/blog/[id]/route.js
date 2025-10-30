@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import Blog from "@/models/blogModel";
 import User from "@/models/userModel";
 import { connect } from "@/dbConfig/dbConfig";
+import { corsHeaders } from '@/middleware/cors';
 
 export async function GET(req, context) {
   await connect();
@@ -61,7 +62,7 @@ export async function GET(req, context) {
       console.log("✅ All comments populated successfully");
     }
 
-    return NextResponse.json(blog, { status: 200 });
+    return NextResponse.json(blog, { status: 200 , headers: corsHeaders()  });
   } catch (err) {
     console.error("❌ GET blog error:", err);
     return NextResponse.json(
