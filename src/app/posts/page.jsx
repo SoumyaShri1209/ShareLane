@@ -16,7 +16,7 @@ const BlogPage = () => {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        const res = await fetch("http://localhost:3000/api/posts", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/posts`, {
           cache: "no-store", // ✅ ensures fresh data every time
         });
         const data = await res.json();
