@@ -4,6 +4,7 @@ import Blog from "@/models/blogModel";
 import User from "@/models/userModel";
 import { connect } from "@/dbConfig/dbConfig";
 import { corsHeaders } from '@/middleware/cors';
+import { verifyJwtToken } from '@/dbConfig/jwt';
 
 export async function GET(req, context) {
   await connect();
@@ -73,3 +74,39 @@ export async function GET(req, context) {
 }
 
 // Keep your other methods (POST, PUT, DELETE) below this if you have them
+
+export async function DELETE(req, context) {
+  await connect();
+
+  try {
+    const { id } = await context.params;
+
+    const authHeader = req.headers.get("authorization");
+    if (!authHeader) {
+      return NextResponse.json({ error: "Authorization header missing" }, { status: 401 });
+    }
+
+    const token = authHeader.split(" ")[1];
+    const decoded = verifyJwtToken(token);
+    if (!decoded) {
+      return NextResponse.json({ error: "Unauthorized (invalid or expired token)" }, { status: 403 });
+    }
+
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+    }
+
+    // Only the author can delete their blog
+    if (String(blog.authorId) !== String(decoded.id)) {
+      return NextResponse.json({ error: "You are not authorized to delete this blog" }, { status: 403 });
+    }
+
+    await Blog.findByIdAndDelete(id);
+
+    return NextResponse.json({ message: "Blog deleted successfully" }, { status: 200, headers: corsHeaders() });
+  } catch (err) {
+    console.error("DELETE /api/posts/[id] error:", err);
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}

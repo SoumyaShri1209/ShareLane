@@ -162,11 +162,11 @@ export default function CreateBlog() {
           className="w-full p-2 rounded bg-gray-500 text-white"
         />
     
-        <input type="file" name="photo" accept="image/*" onChange={handleChange} />
+        <input type="file" name="photo" className="cursor-pointer" accept="image/*" onChange={handleChange} />
         {state.photo && (
           <Image src={URL.createObjectURL(state.photo)} width={200} height={200} alt="Preview" />
         )}
-        <button type="submit" disabled={isLoading} className="bg-green-700 text-white px-6 py-2 rounded">
+        <button type="submit" disabled={isLoading} className="bg-green-700 text-white px-6 py-2 rounded cursor-pointer">
           {isLoading ? "Creating..." : "Create Blog"}
         </button>
       </form>

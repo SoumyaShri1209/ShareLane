@@ -4,6 +4,12 @@
 import jwt from "jsonwebtoken";
 
 export const verifyJwtToken = (token) => {
+  // Guard: if no token provided, return null rather than calling jwt.verify
+  if (!token) {
+    console.error("verifyJwtToken: no token provided");
+    return null;
+  }
+
   try {
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
     console.log("✅ Token valid, decoded:", decoded);

@@ -30,7 +30,8 @@ const Navbar = () => {
       await signOut({ redirect: false });
       await update();
       toast.success("Logout successful", { duration: 3000 });
-      router.push("/login");
+      setShowDropdown(false);
+      router.push("/");
     } catch (error) {
       toast.error("Logout failed");
     }
@@ -49,7 +50,7 @@ const Navbar = () => {
             setProfileData(data);
           }
         }
-      } catch (err) {
+      } catch (err) { 
         console.error("❌ Error loading user:", err);
       }
     }
