@@ -30,6 +30,11 @@ A modern and minimal **blog platform** built with **Next.js 14**, **MongoDB**, a
 
 ---
 
+## Live Project
+
+You can view the live version of the **ShareLane Blog App** here: [https://share-lane-upy2.vercel.app](https://share-lane-upy2.vercel.app)
+
+
 🧑‍💻 Author
 
 Soumya Shri
