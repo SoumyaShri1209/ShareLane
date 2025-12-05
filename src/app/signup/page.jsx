@@ -30,7 +30,30 @@ export default function SignupPage() {
       router.push("/login");
 
     } catch (error) {
-      toast.error("User already exists or signup failed");
+      // Prefer server-provided error message when available (safe access without optional chaining)
+      const serverMessage =
+        error && error.response && error.response.data && error.response.data.error
+          ? error.response.data.error
+          : error && error.message
+          ? error.message
+          : "Signup failed";
+
+      // Suppress console error for the common 'User already exists' case
+      const isDuplicateUserError =
+        error && error.response && error.response.status === 400 && serverMessage === "User already exists";
+
+      if (!isDuplicateUserError) {
+        // Safe logging for unexpected errors
+        if (error && error.response) {
+          console.error("Signup error (response):", error.response);
+        } else if (error && error.message) {
+          console.error("Signup error (message):", error.message);
+        } else {
+          console.error("Signup error:", error);
+        }
+      }
+
+      toast.error(serverMessage);
     } finally {
       setLoading(false);
     }
